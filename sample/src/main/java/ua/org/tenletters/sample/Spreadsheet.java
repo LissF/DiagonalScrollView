@@ -1,4 +1,4 @@
-package ua.org.tenletters.DiagonalScroller;
+package ua.org.tenletters.sample;
 
 import android.app.ActionBar;
 import android.app.Activity;
@@ -9,6 +9,8 @@ import android.widget.*;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import ua.org.tenletters.widget.DiagonalScrollView;
 
 public class Spreadsheet extends Activity {
 
@@ -29,29 +31,26 @@ public class Spreadsheet extends Activity {
         removeActionBarIcon();
 
         // Placeholder in corner
-        topLeftTable = (TableLayout) findViewById(R.id.topLeftTable);
+        topLeftTable = findViewById(R.id.topLeftTable);
 
         // Column titles
-        topTable = (TableLayout) findViewById(R.id.topTable);
-        horizontalScroller = (HorizontalScrollView) findViewById(R.id.horisontalScroller);
+        topTable = findViewById(R.id.topTable);
+        horizontalScroller = findViewById(R.id.horisontalScroller);
         horizontalScroller.setHorizontalScrollBarEnabled(false);
         horizontalScroller.setOnTouchListener(new TouchConsumer());
 
         // Row titles
-        leftTable = (TableLayout) findViewById(R.id.leftTable);
-        verticalScroller = (ScrollView) findViewById(R.id.verticalScroller);
+        leftTable = findViewById(R.id.leftTable);
+        verticalScroller = findViewById(R.id.verticalScroller);
         verticalScroller.setVerticalScrollBarEnabled(false);
         verticalScroller.setOnTouchListener(new TouchConsumer());
 
         // Cells
-        contentTable = (TableLayout) findViewById(R.id.contentTable);
-        final DiagonalScrollView diagonalScroller = (DiagonalScrollView) findViewById(R.id.diagonalScrollView);
-        diagonalScroller.setOnScrollListener(new OnScrollListener() {
-            @Override
-            public void onScrollChanged(int left, int top, int oldLeft, int oldTop) {
-                horizontalScroller.scrollTo(left, 0);
-                verticalScroller.scrollTo(0, top);
-            }
+        contentTable = findViewById(R.id.contentTable);
+        final DiagonalScrollView diagonalScroller = findViewById(R.id.diagonalScrollView);
+        diagonalScroller.setOnScrollListener((left, top, oldLeft, oldTop) -> {
+            horizontalScroller.scrollTo(left, 0);
+            verticalScroller.scrollTo(0, top);
         });
 
         populateTables(getTableData());
@@ -163,7 +162,7 @@ public class Spreadsheet extends Activity {
      */
     private View getCellView(final ViewGroup parent, final String text, final int colorRes) {
         final View leftTableCell = LayoutInflater.from(this).inflate(R.layout.cell, parent, false);
-        final TextView leftTableCellText = (TextView) leftTableCell.findViewById(R.id.itemText);
+        final TextView leftTableCellText = leftTableCell.findViewById(R.id.itemText);
         leftTableCellText.setText(text);
         leftTableCellText.setTextColor(getResources().getColor(colorRes));
 
