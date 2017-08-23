@@ -66,7 +66,7 @@ public class SpreadsheetActivity extends AppCompatActivity {
         verticalScroller.setOnTouchListener(new TouchConsumer());
 
         final DiagonalScrollView diagonalScroller = findViewById(R.id.diagonal_scroller);
-        diagonalScroller.setOnScrollListener((left, top, oldLeft, oldTop) -> {
+        diagonalScroller.addOnScrollListener((left, top, oldLeft, oldTop) -> {
             horizontalScroller.scrollTo(left, 0);
             verticalScroller.scrollTo(0, top);
         });
@@ -76,7 +76,6 @@ public class SpreadsheetActivity extends AppCompatActivity {
      * Fills "Column" and "Row" headers, and "Content" table with inflated cell views
      */
     private void populateTables() {
-        // I know that I get a matrix, so I'm skipping the normalization
         final TableRow topRow = new TableRow(this);
         for (int i = 0; i < NUM_COLUMNS; i++) {
             topRow.addView(getCellView(topRow, getString(R.string.cell_column_format, i),

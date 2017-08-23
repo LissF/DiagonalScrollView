@@ -6,8 +6,8 @@ ext.versions = [
         'targetSdk'     : 26,
         'buildTools'    : '26.0.1',
 
-        'release'       : '0.2.1',
-        'code'          : 14,
+        'release'       : '0.3.0',
+        'code'          : 16,
 ]
 
 android {

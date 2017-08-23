@@ -224,8 +224,12 @@ public class DiagonalScrollView extends FrameLayout {
         }
     }
 
-    public void setOnScrollListener(final OnScrollListener listener) {
+    public void addOnScrollListener(final OnScrollListener listener) {
         this.listeners.add(listener);
+    }
+
+    public boolean removeOnScrollListener(final OnScrollListener listener) {
+        return this.listeners.remove(listener);
     }
 
     @Override
