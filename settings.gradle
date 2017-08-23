@@ -1,1 +1,1 @@
-include ':sample', ':scroller'
+include ':sample', ':diagonalscrollview'

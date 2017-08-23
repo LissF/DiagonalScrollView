@@ -1,0 +1,55 @@
+apply plugin: 'com.android.library'
+
+ext {
+    bintrayRepo = 'maven'
+    bintrayName = 'diagonalscrollview'
+
+    publishedGroupId = 'ua.org.tenletters.widget'
+    libraryName = 'DiagonalScrollView'
+    artifact = 'diagonalscrollview'
+
+    libraryDescription = 'This view is a container that supports diagonal scroll and fling gesture. It is based on AOSP HorizontalScrollView.'
+
+    siteUrl = 'https://github.com/LissF/DiagonalScrollView'
+    gitUrl = 'https://github.com/LissF/DiagonalScrollView.git'
+
+    libraryVersion = '0.3.3'
+
+    developerId = 'lissf'
+    developerName = 'Yegor Zatsepin'
+    developerEmail = 'Liss_F@ukr.net'
+
+    licenseName = 'The Apache Software License, Version 2.0'
+    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+    allLicenses = ["Apache-2.0"]
+}
+
+ext.versions = [
+        'minSdk'        : 14,
+        'compileSdk'    : 26,
+        'targetSdk'     : 26,
+        'buildTools'    : '26.0.1',
+
+        'release'       : libraryVersion,
+        'code'          : 18,
+]
+
+android {
+    compileSdkVersion versions.compileSdk
+    buildToolsVersion versions.buildTools
+
+    defaultConfig {
+        minSdkVersion versions.minSdk
+        targetSdkVersion versions.targetSdk
+
+        versionCode versions.code
+        versionName versions.release
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+apply from: 'https://raw.githubusercontent.com/LissF/JCenter/master/script.gradle'
