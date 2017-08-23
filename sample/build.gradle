@@ -1,21 +1,27 @@
 apply plugin: 'com.android.application'
 
+repositories {
+    google()
+}
+
+ext.versions = [
+        'minSdk'        : 14,
+        'compileSdk'    : 26,
+        'targetSdk'     : 26,
+        'buildTools'    : '26.0.1',
+
+        'supportLibrary': '26.0.1',
+]
+
 android {
-    compileSdkVersion 26
-    buildToolsVersion "26.0.1"
+    compileSdkVersion versions.compileSdk
+    buildToolsVersion versions.buildTools
 
     defaultConfig {
         applicationId "ua.org.tenletters.sample.spreadsheet"
 
-        minSdkVersion 14
-        targetSdkVersion 26
-    }
-
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
-        }
+        minSdkVersion versions.minSdk
+        targetSdkVersion versions.targetSdk
     }
 
     compileOptions {
@@ -26,4 +32,7 @@ android {
 
 dependencies {
     implementation project(':scroller')
+
+    implementation "com.android.support:appcompat-v7:$versions.supportLibrary"
+    implementation "com.android.support:support-annotations:$versions.supportLibrary"
 }

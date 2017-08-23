@@ -7,11 +7,11 @@
         android:allowBackup="false"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/PseudoMaterialTheme"
+        android:theme="@style/AppTheme"
         >
 
         <activity
-            android:name="ua.org.tenletters.sample.Spreadsheet"
+            android:name="ua.org.tenletters.sample.SpreadsheetActivity"
             android:label="@string/app_name"
             >
             <intent-filter>

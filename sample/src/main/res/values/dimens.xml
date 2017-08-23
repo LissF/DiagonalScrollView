@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="action_bar_height">56dp</dimen>
-    <dimen name="shadow">4dp</dimen>
+    <dimen name="action_bar_text_size">20sp</dimen>
+    <dimen name="cell_width">120dp</dimen>
+    <dimen name="cell_height">64dp</dimen>
+    <dimen name="cell_margin">20dp</dimen>
 </resources>
