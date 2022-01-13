@@ -19,8 +19,8 @@ import ua.org.tenletters.widget.DiagonalScrollView;
 
 public class SpreadsheetActivity extends AppCompatActivity {
 
-    private static final int NUM_COLUMNS = 10;
-    private static final int NUM_ROWS = 30;
+    private static int NUM_COLUMNS = 10;
+    private static int NUM_ROWS = 30;
 
     private TableLayout columns;
     private TableLayout rows;
@@ -37,6 +37,8 @@ public class SpreadsheetActivity extends AppCompatActivity {
         setupScrollers();
 
         populateTables();
+        
+        rePopulateExistingTables();
     }
 
     private void setupActionBar() {
@@ -70,6 +72,30 @@ public class SpreadsheetActivity extends AppCompatActivity {
             horizontalScroller.scrollTo(left, 0);
             verticalScroller.scrollTo(0, top);
         });
+    }
+    
+    /**
+     *  reset the existing Tables
+     */
+
+    private void rePopulateExistingTables() {
+
+        NUM_COLUMNS = 5;
+        NUM_ROWS = 4;
+
+        // reset if views are already set
+        if (columns.getChildCount()>0) {
+            columns.removeAllViews();
+        }
+        if (rows.getChildCount()>0) {
+            rows.removeAllViews();
+        }
+        if (content.getChildCount()>0) {
+            content.removeAllViews();
+        }
+
+        populateTables();
+
     }
 
     /**
